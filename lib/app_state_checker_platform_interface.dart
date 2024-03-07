@@ -14,7 +14,7 @@ abstract class AppStateCheckerPlatform extends PlatformInterface {
   ///
   /// Defaults to [MethodChannelAppStateChecker].
   static AppStateCheckerPlatform get instance => _instance;
-  
+
   /// Platform-specific implementations should set this with their own
   /// platform-specific class that extends [AppStateCheckerPlatform] when
   /// they register themselves.
