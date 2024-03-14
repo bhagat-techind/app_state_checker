@@ -9,6 +9,17 @@ public class SwiftAppStateCheckerPlugin: NSObject, FlutterPlugin {
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
-    result("iOS " + UIDevice.current.systemVersion)
+     if (call.method == "getAppState") {
+      switch UIApplication.shared.applicationState {
+          case .background, .inactive:
+             result(1)
+          case .active:
+              result(0)
+          default:
+              result(-1)
+              break
+      }
+    }
+    result(-1)
   }
 }
