@@ -1,7 +1,7 @@
 name: app_state_checker
 description: A new Flutter plugin to check app state
 version: 0.0.1
-homepage:
+homepage: https://github.com/bhagat-techind/app_state_checker
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
