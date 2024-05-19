@@ -1,5 +1,6 @@
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
+import 'app_state.dart';
 import 'app_state_checker_method_channel.dart';
 
 abstract class AppStateCheckerPlatform extends PlatformInterface {
@@ -23,7 +24,11 @@ abstract class AppStateCheckerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
+  Future<int?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
+  Future<AppState?> getAppState() {
+    throw UnimplementedError('getAppState() has not been implemented.');
   }
 }

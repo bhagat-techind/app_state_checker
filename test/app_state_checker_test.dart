@@ -1,14 +1,18 @@
-import 'package:flutter_test/flutter_test.dart';
+import 'package:app_state_checker/app_state.dart';
 import 'package:app_state_checker/app_state_checker.dart';
-import 'package:app_state_checker/app_state_checker_platform_interface.dart';
 import 'package:app_state_checker/app_state_checker_method_channel.dart';
+import 'package:app_state_checker/app_state_checker_platform_interface.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 class MockAppStateCheckerPlatform
     with MockPlatformInterfaceMixin
     implements AppStateCheckerPlatform {
   @override
-  Future<String?> getPlatformVersion() => Future.value('42');
+  Future<int?> getPlatformVersion() => Future.value(0);
+
+  @override
+  Future<AppState?> getAppState() => Future.value(AppState.unknown);
 }
 
 void main() {
@@ -24,6 +28,6 @@ void main() {
     MockAppStateCheckerPlatform fakePlatform = MockAppStateCheckerPlatform();
     AppStateCheckerPlatform.instance = fakePlatform;
 
-    expect(await appStateCheckerPlugin.getPlatformVersion(), '42');
+    expect(await appStateCheckerPlugin.getPlatformVersion(), 0);
   });
 }
