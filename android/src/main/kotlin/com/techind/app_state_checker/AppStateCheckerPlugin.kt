@@ -40,11 +40,11 @@ class AppStateCheckerPlugin: FlutterPlugin, MethodCallHandler,ActivityAware {
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
     if (call.method == "getPlatformVersion") {
-      checkAppState(result, call.argument<String>("packageName"))
+     // checkAppState(result, call.argument<String>("packageName"))
       result.success("Android ${android.os.Build.VERSION.RELEASE}")
     }
     if (call.method == "getAppState") {
-      checkAppState(result, call.argument<String>("packageName"))
+      checkAppState(result)
     } else {
       result.notImplemented()
     }
