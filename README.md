@@ -1,7 +1,7 @@
 # app_state_checker
 
 A new Flutter plugin to check current state of your app, whether app is in running state, background state or kill state 
-By using this plugin you can check whether your app in in active state,[AppState](/lib/app_state.dart)  and can handle your use case on behalf of this.
+By using this plugin you can check whether your app in in active state, [AppState](/lib/app_state.dart) and can handle your use case on behalf of this.
 
 
 ## Installing
@@ -19,7 +19,7 @@ pubspec.yaml:
 We are using following methods :-
 
 - getAppState() : To get app current state.
-- [AppState](/lib/app_state.dart) : See all states percent in this plugin.
+- [AppState](lib/app_state.dart) : See all states percent in this plugin.
 
 ## Full Example
 
