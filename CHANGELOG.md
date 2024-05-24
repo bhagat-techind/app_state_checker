@@ -11,3 +11,7 @@
 
 * Update README.md
 * fixed incorrect return type of state  
+
+## 1.0.1+1
+
+* Update README.md
