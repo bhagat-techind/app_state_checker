@@ -9,10 +9,7 @@ class MockAppStateCheckerPlatform
     with MockPlatformInterfaceMixin
     implements AppStateCheckerPlatform {
   @override
-  Future<int?> getPlatformVersion() => Future.value(0);
-
-  @override
-  Future<AppState?> getAppState() => Future.value(AppState.unknown);
+  Future<AppState> getAppState() => Future.value(AppState.background);
 }
 
 void main() {
@@ -23,11 +20,11 @@ void main() {
     expect(initialPlatform, isInstanceOf<MethodChannelAppStateChecker>());
   });
 
-  test('getPlatformVersion', () async {
+  test('getAppState', () async {
     AppStateChecker appStateCheckerPlugin = AppStateChecker();
     MockAppStateCheckerPlatform fakePlatform = MockAppStateCheckerPlatform();
     AppStateCheckerPlatform.instance = fakePlatform;
 
-    expect(await appStateCheckerPlugin.getPlatformVersion(), 0);
+    expect(await appStateCheckerPlugin.getAppState(), AppState.background);
   });
 }

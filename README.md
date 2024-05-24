@@ -1,6 +1,8 @@
 # app_state_checker
 
-A new Flutter plugin to check app state, like background foreground.
+A new Flutter plugin to check current state of your app, whether app is in running state, background state or kill state 
+By using this plugin you can check whether your app in in active state,[AppState](/lib/app_state.dart)  and can handle your use case on behalf of this.
+
 
 ## Installing
 
@@ -16,8 +18,8 @@ pubspec.yaml:
 
 We are using following methods :-
 
-- getAppState() \* => To get aap state use this method.
-- AppState \* => All state percent in this enum.
+- getAppState() : To get app current state.
+- [AppState](/lib/app_state.dart) : See all states percent in this plugin.
 
 ## Full Example
 
@@ -39,7 +41,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  int _platformVersion = -1;
   AppState _appState = AppState.unknown;
 
   final _appStateCheckerPlugin = AppStateChecker();
@@ -47,29 +48,7 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    initPlatformState();
     getAppState();
-  }
-
-  // Platform messages are asynchronous, so we initialize in an async method.
-  Future<void> initPlatformState() async {
-    int platformVersion;
-    // Platform messages may fail, so we use a try/catch PlatformException.
-    // We also handle the message potentially returning null.
-    try {
-      platformVersion = await _appStateCheckerPlugin.getPlatformVersion() ?? -1;
-    } on PlatformException {
-      platformVersion = -1;
-    }
-
-    // If the widget was removed from the tree while the asynchronous platform
-    // message was in flight, we want to discard the reply rather than calling
-    // setState to update our non-existent appearance.
-    if (!mounted) return;
-
-    setState(() {
-      _platformVersion = platformVersion;
-    });
   }
 
   Future<void> getAppState() async {
@@ -97,15 +76,10 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: const Text('App state'),
         ),
         body: Center(
-          child: Column(
-            children: [
-              Text('Running on: $_platformVersion\n'),
-              Text('App State: $_appState\n'),
-            ],
-          ),
+          child:Text('App State: $_appState\n'),
         ),
       ),
     );

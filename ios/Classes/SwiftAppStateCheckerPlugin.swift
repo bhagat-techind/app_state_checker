@@ -12,16 +12,20 @@ public class SwiftAppStateCheckerPlugin: NSObject, FlutterPlugin {
      if (call.method == "getAppState") {
       switch UIApplication.shared.applicationState {
           case .inactive:
-              result(3)
+              result(2)
+               break
           case .background:
-             result(2)
+             result(1)
+              break
           case .active:
-              result(1)
-          default:
               result(0)
+               break
+          default:
+              result(3)
               break
       }
+    } else {
+        result(0)
     }
-    result(0)
   }
 }

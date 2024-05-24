@@ -11,14 +11,17 @@ class MethodChannelAppStateChecker extends AppStateCheckerPlatform {
   final methodChannel = const MethodChannel('app_state_checker');
 
   @override
-  Future<int?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<int>('getPlatformVersion');
-    return version;
-  }
-
-  @override
-  Future<AppState?> getAppState() async {
-    final version = await methodChannel.invokeMethod<AppState>('getAppState');
-    return version;
+  Future<AppState> getAppState() async {
+    final stateInt = await methodChannel.invokeMethod<int>('getAppState');
+    switch (stateInt) {
+      case 0:
+        return AppState.foreground;
+      case 1:
+        return AppState.background;
+      case 2:
+        return AppState.killState;
+      default:
+        return AppState.unknown;
+    }
   }
 }

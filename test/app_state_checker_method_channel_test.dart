@@ -1,3 +1,4 @@
+import 'package:app_state_checker/app_state.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:app_state_checker/app_state_checker_method_channel.dart';
@@ -10,7 +11,7 @@ void main() {
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
+      return AppState.background;
     });
   });
 
@@ -18,7 +19,7 @@ void main() {
     channel.setMockMethodCallHandler(null);
   });
 
-  test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+  test('getAppState', () async {
+    expect(await platform.getAppState(), AppState.background);
   });
 }
