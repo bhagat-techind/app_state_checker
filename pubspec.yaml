@@ -1,6 +1,6 @@
 name: app_state_checker
-description: A new Flutter plugin to check app state
-version: 0.0.1
+description: A new Flutter plugin to check whether app is in background, foreground and kill state
+version: 1.0.0
 homepage: https://github.com/bhagat-techind/app_state_checker
 
 environment:
