@@ -49,7 +49,7 @@ class AppStateCheckerPlugin: FlutterPlugin, MethodCallHandler,ActivityAware {
       result.notImplemented()
     }
   }
-  private fun checkAppState(@NonNull result: Result, packageName:String?){
+  private fun checkAppState(@NonNull result: Result){
     Log.d("checkAppState", "CheckBackground : ${ProcessLifecycleOwner.get().lifecycle.currentState}"  )
     Log.d("checkAppState", "CheckBackground : ${ProcessLifecycleOwner.get().lifecycle.currentState == Lifecycle.State.CREATED}"  )
     Log.d("checkAppState", "CheckBackground : ${ProcessLifecycleOwner.get().lifecycle.currentState.isAtLeast(Lifecycle.State.CREATED)}"  )

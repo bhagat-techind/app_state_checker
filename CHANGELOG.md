@@ -15,3 +15,7 @@
 ## 1.0.1+1
 
 * Update README.md
+* 
+## 1.0.2+1
+
+* Fixed android build issue 
