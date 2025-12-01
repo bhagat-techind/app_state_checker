@@ -24,7 +24,7 @@ abstract class AppStateCheckerPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<AppState> getAppState() {
+  Future<AppState?> getAppState() {
     throw UnimplementedError('getAppState() has not been implemented.');
   }
 }

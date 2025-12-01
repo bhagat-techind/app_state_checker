@@ -1,22 +1,28 @@
 import 'package:app_state_checker/app_state.dart';
+import 'package:app_state_checker/app_state_checker_method_channel.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:app_state_checker/app_state_checker_method_channel.dart';
 
 void main() {
   MethodChannelAppStateChecker platform = MethodChannelAppStateChecker();
   const MethodChannel channel = MethodChannel('app_state_checker');
-
+  late TestDefaultBinaryMessenger messenger;
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return AppState.background;
-    });
+    messenger =
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger;
+
+    messenger.setMockMethodCallHandler(
+      channel,
+      (MethodCall methodCall) async {
+        return AppState.background;
+      },
+    );
   });
 
   tearDown(() {
-    channel.setMockMethodCallHandler(null);
+    messenger.setMockMethodCallHandler(channel, null);
   });
 
   test('getAppState', () async {
