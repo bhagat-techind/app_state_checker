@@ -25,7 +25,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 36
+    namespace "com.techind.app_state_checker"
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
